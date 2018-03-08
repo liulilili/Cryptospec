@@ -1,52 +1,44 @@
+
 App({
-startWebSocket: function () {
+  globalData:{
+    mimeMap: null, 
+    roomNo: 0,
+    cash:0,
+    coin:20,
+    coinNum:20,
+  },
+  /*updateMap: function(mimeMap) {
+    this.globalData.mimeMap = mimeMap;
+  },
+  getMap: function() {
+    return this.globalData.mimeMap;
+  },*/
 
-  var that = this;
-  that.WebSocketInit()
-  wx.onSocketError(function () {
-  })
-  wx.onSocketMessage(function (data_) {
-    that.socketOperation(data_)
-  })
-  wx.onSocketClose(function (res) {
-    that.WebSocketInit()
-  })
-},
-
-//连接websocket
-WebSocketInit: function() {
-  wx.connectSocket({
-    url: this.data.wws,
-    data: {},
-    method: 'GET',
-    success: function (res) {
-      console.log("connectSocket 成功")
-    },
-    fail: function (res) {
-      console.log("connectSocket 失败")
+  setCoin: function(coin) {
+    this.globalData.coin = coin;
+  },
+  changeCoin: function() {
+    if(this.globalData.coin > 0) {
+      this.globalData.coin -= coinNum;
+    }else if(this.globalData.coin < 0){
+      this.globalData.coin += coinNum;
     }
-  })
-  wx.onSocketOpen(function () {
-    // callback
-    var mCmd = { "cmd": "connect.Connect", "data": {} }
-    wx.sendSocketMessage({
-      data: JSON.stringify(mCmd),
-      success: function (res) {
-        console.log("sendSocketMessage 成功")
-      },
-      fail: function (res) {
-        console.log("sendSocketMessage 失败")
-      }
-    });
+  },
+  getCoin: function() {
+    return this.globalData.coin
+  },
 
-    wx.onSocketMessage(function (data) {
-      console.log("onSocketMessage ", data)
-    })
+  getRoomNo: function() {
+    return this.globalData.roomNo
+  },
+  setRoomNo: function(no) {
+    this.globalData.roomNo = no;
+  },
 
-
-  })
-
-
-
-}
+  setMyCash: function(coin) {
+    this.globalData.cash = cash;
+  },
+  getMyCash: function() {
+    return this.globalData.cash;
+  }
 })
