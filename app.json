@@ -2,7 +2,8 @@
   "pages":[
     "pages/entry/entry",
     "pages/gameover/gameover",
-    "pages/index/index"
+    "pages/index/index",
+    "pages/change/change"
   ],
   "window":{
     "backgroundTextStyle":"light",
