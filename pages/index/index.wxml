@@ -1,9 +1,13 @@
 <!--index.wxml-->
 <view class="wrapper">
     <view class="top">
-        <text class="label my-score">我的得分：{{score}}</text>
         <text class="label room-no">房间号：{{roomNo}}</text>
-        <text class="label my-score">剩余钱币：{{leftGolds}}</text>
+        <text class="label my-score">剩余钱币：{{leftCoins}}</text>
     </view>
-    <button>交易比特币</button>
+    <view class="container">
+    <canvas canvas-id="canvas"style="border: 1px solid;">
+    <canvas canvas-id="change"></canvas>
+    </canvas>
+    </view>
+    <button bindtap="change_bitcoin">交易比特币</button>
 </view>

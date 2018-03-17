@@ -45,3 +45,29 @@
 .top .label {
     flex: 1;
 }
+@keyframes anim{
+      0% {left: 50px;top: 200px;}
+      30% {left: 200px;top: 50px;}
+      70% {left: 400px;top: 200px;}
+      100% {left: 600px;top: 100px;}
+}
+.ball {
+    width: 10px;
+    height: 10px;
+    background-color: #f66;
+    border-radius: 50%;
+    position: absolute;
+    animation: anim 4s;
+}
+.container {
+  height: 100%;
+  width: 100%;
+}
+
+.canvas {
+  height: 100%;
+  width: 100%;
+}
+
+/*有些人会有疑问为什么设置了100%却没有100%，其实要到app.wxss里设置一下*/
+/**app.wxss**/

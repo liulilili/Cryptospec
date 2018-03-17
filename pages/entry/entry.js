@@ -13,8 +13,12 @@ Page({
           return;
       }
       app.setRoomNo(roomNo);
-      wx.navigateTo({
+      wx.redirectTo({
           url: '../index/index'
+      })
+      wx.drawCanvas({
+        canvasId: 'canvas',
+        actions: actions
       });
   },
   roomNoChanged: function(event) {

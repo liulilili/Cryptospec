@@ -6,10 +6,17 @@ var app = getApp();
 
 Page({
     data: {
-        coin: 0, // 总共有多少金子
-        scashcore: 0,     // 我的得分
-        roomNo: 0     // 房间号
+        leftCoins: 0,
+        roomNo: 0
     },
+    change_bitcoin:function(){
+      wx.redirectTo({
+        url: '../gameover/gameover'
+      });
+
+    },
+
+
     onLoad: function () {
         var roomNo = app.getRoomNo();
         this.setData({
@@ -29,13 +36,62 @@ Page({
               no: roomNo
             });
         }
+        var that = this
+        //获取系统信息  
+        wx.getSystemInfo({
+          success: function (res) {
+            that.width = res.windowWidth
+            that.height = res.windowHeight
+          }
+        })
     },
-
+    
     reportMyChoice: function() {
         var roomNo = app.getRoomNo();
         websocket.send({
-            type: 'dig',
+            type: 'sell',
             no: roomNo
         });
     },
+
+onReady: function () {
+    this.drawChange();
+    // 每40ms执行一次drawClock()，人眼看来就是流畅的画面
+    this.interval = setInterval(this.drawChange, 40);
+  },
+
+
+  // 所有的canvas属性以及Math.sin,Math.cos()等涉及角度的参数都是用弧度表示
+  // 时钟
+  drawChange: function () {
+    const ctx = wx.createCanvasContext('change');
+    var height = (this.height)/2;
+    var width = (this.width)/2;
+    // 把原点的位置移动到屏幕中间，及宽的一半，高的一半
+    ctx.translate(width / 2, height / 2);
+    ctx.beginPath();
+
+
+
+    function drawSecondchange() {
+      var t_n=1,
+          a_n=2,
+      t_n=5*(1+rand(-1,1)*0.1);
+      ctx.setLineWidth(4);
+      ctx.setStrokeStyle('red');
+      ctx.setLineCap('round');
+      ctx.moveTo(0, t_n);
+      ctx.stroke();
+      //ctx.closePath();
+      //ctx.restore();
+    }
+
+
+    function Getchange() {
+      var now = new Date();
+      drawSecondchange();
+      ctx.draw();
+    }
+    Getchange();
+  }
 });
