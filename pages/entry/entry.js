@@ -8,7 +8,7 @@ Page({
   },
   startGame: function() {
       var roomNo = this.data.roomNo;
-      if(roomNo) {
+      if(!roomNo) {
           console.error('请填写房间号');
           return;
       }

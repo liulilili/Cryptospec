@@ -76,7 +76,7 @@ onReady: function () {
     function drawSecondchange() {
       var t_n=1,
           a_n=2,
-      t_n=5*(1+rand(-1,1)*0.1);
+      t_n=5*(1+(Math.random()*2-1)*0.1);
       ctx.setLineWidth(4);
       ctx.setStrokeStyle('red');
       ctx.setLineCap('round');
