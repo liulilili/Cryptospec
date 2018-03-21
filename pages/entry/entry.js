@@ -8,7 +8,8 @@ Page({
   },
   startGame: function() {
       var roomNo = this.data.roomNo;
-      if(!roomNo) {
+      var context = wx.createContext();
+      if(roomNo) {
           console.error('请填写房间号');
           return;
       }
@@ -18,7 +19,7 @@ Page({
       })
       wx.drawCanvas({
         canvasId: 'canvas',
-        actions: actions
+        actions: context.getActions()
       });
   },
   roomNoChanged: function(event) {
