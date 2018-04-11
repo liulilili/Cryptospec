@@ -1,0 +1,16 @@
+<!--index.wxml-->
+<view class="wrapper">
+    <view class="top">
+        <text class="label room-no">房间号：{{roomNo}}</text>
+        <text class="label my-score">剩余钱币：{{leftCoins}}</text>
+    </view>
+    <view class="container">
+    <view bindtap='changeRed' data-size='5'>
+    <button>anta</button>
+    </view>
+    <canvas canvas-id="myCanvas"data-size="15" style="border: 1px solid;">
+    </canvas>
+
+    </view>
+    <button bindtap="change_bitcoin">交易比特币</button>
+</view>
